@@ -1,0 +1,102 @@
+# Analytics Edge Ecosystem Workloads Project
+
+## Abstract
+Edge Computing has become immensely beneficial for running analytics at the edge, thereby reducing the amount of data sent to servers and storage at the core or cloud, which in turn increases latency. The Analytics Edge Ecosystem Workloads project aims to bring about a digital transformation strategy by focusing on cloud-native containerization to improve business analytics.
+
+In this project, AI/ML and Generative AI (GenAI) workloads will be developed to address the challenges faced in the healthcare/medical industry. The development of this project includes the open-source deployment of AI/ML and GenAI workloads as well as deployments on Kubernetes using Rancher by SUSE, with openSUSE Leap as the base layer operating system. Additionally, K3s will be utilized as a lightweight Kubernetes designed for the Edge.
+
+The project implementation will involve several tech stacks such as DataOps to manage data pipelines, MLOps, and LLMOps to manage ML and LLM pipelines, as well as Platform Engineering and ITOps to manage platforms.
+
+## Problem Statement
+**Vertical: Medical/Healthcare**
+
+Many individuals face various challenges when dealing with their prescription medications. These challenges include unfamiliar medical terminology, misinterpreted prescriptions, unclear dosage and usage instructions, missed expiration dates, unexpected side effects, and drug interactions. These issues can lead to overdosing, accidents, and even death.
+
+## Proposed Solution
+This project aims to leverage machine learning and generative AI to help address some of the challenges that patients and doctors face with medical prescriptions. This will involve the four features outlined below:
+
+1. **Medicine Scanner:** Scans medicine to inform about the medicine, dosage, side effects, and date of expiry.
+2. **Medical Report Scanner:** Scans and simplifies test reports to help patients understand their medical reports.
+3. **Prescription Scanner:** Scans and interprets handwritten prescriptions to help patients, pharmacists, and others properly interpret a doctor’s instructions.
+4. **Prescription Generator:** Enables doctors to more quickly and easily generate accurate, understandable prescriptions.
+
+## Detailed Explanation
+### Data Extraction and Transformation
+- **Data Sources:** Medical data from UCIML repositories, Kaggle, and other trusted sources.
+- **Data Processing:** Feature engineering and data cleaning will be performed after extraction.
+- **Data Storage:** Data will be converted to embeddings and stored in a vector database for Retrieval-Augmented Generation (RAG).
+
+### Retrieval-Augmented Generation (RAG)
+- **Model Utilization:** Leverage open-source Large Language Models (LLMs) to power RAG.
+- **Model Fine-tuning:** Fine-tune the model for the medication use case.
+
+### User Interface and LLMOps
+- **User Interface:** Create a user-friendly interface.
+- **LLMOps Pipeline:** Define an end-to-end LLMOps pipeline to enable additional training and fine-tuning.
+
+This project encompasses GenAI, MLOps, and LLMOps tech stacks.
+
+## How to Run the Project
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/analytics-edge-ecosystem.git
+   cd analytics-edge-ecosystem
+
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Acknowledgments
+- Thanks to the open-source community for providing various tools and frameworks.
+- Special thanks to UCIML, Kaggle, and other trusted sources for providing the datasets.
+- Gratitude to SUSE, openSUSE Leap, and Rancher for their powerful tools enabling Kubernetes deployments.
+
+## Future Work
+The project aims to continually improve and expand its features. Future work includes:
+- **Enhanced Model Training:** Continuously improve the accuracy and efficiency of AI/ML models.
+- **Integration with More Data Sources:** Expand the data sources to include more comprehensive and diverse medical data.
+- **User Feedback Mechanism:** Implement a feedback system for users to report issues and suggest improvements.
+- **Mobile Application:** Develop a mobile application to make the solution more accessible to patients and healthcare providers.
+
+## Data Sources
+- [UCIML Repository](https://archive.ics.uci.edu/ml/index.php)
+- [Kaggle Datasets](https://www.kaggle.com/datasets)
+- 
+
+
+
+### [Unreleased]
+- Initial project setup
+- Implementation of Medicine Scanner, Medical Report Scanner, Prescription Scanner, and Prescription Generator
+- Deployment on Kubernetes using Rancher and K3s
+- Development of DataOps, MLOps, and LLMOps pipelines
+
+### [1.0.0] - YYYY-MM-DD
+- Initial release
+
+## Authors
+- [Aman Kumar](https://github.com/Aman123lug) - Initial work
+
+## Support
+If you need support, please open an issue on the [GitHub repository](https://github.com/yourusername/analytics-edge-ecosystem/issues).
+
+---
+
+This README file provides a comprehensive overview of the project, including setup instructions, contribution guidelines, license information, acknowledgments, future work, references, FAQs, code of conduct, changelog, and support details. Make sure to update the placeholders with actual information and links specific to your project.
