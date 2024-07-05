@@ -3,7 +3,7 @@ import google.generativeai as genai
 import os
 # from dotenv import load_dotenv
 
-API_KEY = "lalalaa"
+API_KEY = ""
 
 genai.configure(api_key=API_KEY)
 

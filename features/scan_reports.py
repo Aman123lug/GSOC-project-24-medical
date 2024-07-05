@@ -5,7 +5,7 @@ import os
 st.title("Scan Test Reports")
 
 
-API_KEY = "AIzaSyBPUe3zGsENELyvVuDfjLFD1TN2gw02qyY"
+API_KEY = ""
 
 genai.configure(api_key=API_KEY)
 
