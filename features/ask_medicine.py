@@ -9,7 +9,7 @@ genai.configure(api_key=API_KEY)
 
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-st.title("Scan Medicine")
+st.title("Ask Medicine")
 
 # Initialize chat history
 if "messages" not in st.session_state:
