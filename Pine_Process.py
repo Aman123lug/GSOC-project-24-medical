@@ -13,7 +13,6 @@ pine = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
 index = pine.Index(os.environ.get("PINECONE_INDEX"))
 genai.configure(api_key=os.environ.get(GENAI_API_KEY))
 
-
 def get_context_new(input_query,med_name,k=2):
 
     input_embed = HF_EMBEDDINGS.embed_query(input_query)
