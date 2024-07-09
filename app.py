@@ -1,7 +1,7 @@
 import streamlit as st
 
 ask_medicine = st.Page(
-    "features/ask_medicine.py", title="Scan Medicine", icon=":material/dashboard:", default=True
+    "features/ask_medicine.py", title="Ask Medicine", icon=":material/dashboard:", default=True
 )
 generate_prescription = st.Page(
     "features/generate_pres.py", title="Generate Prescription", icon=":material/dashboard:"
@@ -12,7 +12,7 @@ scan_reports = st.Page(
 )
 
 scan_medicine = st.Page(
-    "features/scan_medicines.py", title="test", icon=":material/dashboard:"
+    "features/scan_medicines.py", title="Scan Medicines", icon=":material/dashboard:"
 )
 
 search = st.Page("tools/search.py", title="Search", icon=":material/search:")
