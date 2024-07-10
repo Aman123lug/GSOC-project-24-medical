@@ -7,11 +7,11 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 load_dotenv()
 CHUNK_SIZE = 3000
-GENAI_API_KEY = ""
+# GENAI_API_KEY = ""
 HF_EMBEDDINGS = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 pine = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
 index = pine.Index(os.environ.get("PINECONE_INDEX"))
-genai.configure(api_key=os.environ.get(GENAI_API_KEY))
+genai.configure(api_key=os.environ.get("GENAI_API_KEY"))
 
 def get_context_new(input_query,med_name,k=2):
 
@@ -41,13 +41,12 @@ def get_context_new(input_query,med_name,k=2):
 
 
 def get_llm_response(context:str,query:str) -> str :
-    input = f""" Your are an helpful pharmacist. you are MedSathi is a AI powered LLM chatbot Use the given context to get the knowledge of the medicine asked
-        and you have to drive your answer accordingly, and answer only using the context, don't add any other information over it.
-        context:{context}.
-        This is the query you have to answer
-        query:{query}
+    input = f""" Your are MedSathi a helpful pharmacist. Use the given context to get the knowledge of the medicine and provide as much information possible about the medicine using the context, and answer only using the context, don't add any other information over it.
+    context:{context}.
+    This is the query you have to answer
+    query:{query}
         
-        but if the user not provide any medicine name or something. if they do any small talk like: hi, hello chat with them and tell him about your self and you can only give information which in FDA approved
+    but if the user not provide any medicine name or something. if they do any small talk like: hi, hello chat with them and tell him about your self and you can only give information which in FDA approved
         """
     model=genai.GenerativeModel('gemini-pro')
     response=model.generate_content(input)
@@ -82,8 +81,9 @@ if __name__ == "__main__":
 
     prompt = "What is Tetanus? and what is the usecase of Tetanus"
     context = get_context_new(prompt, "A")
-    # response = get_llm_response(context, prompt)
+    response = get_llm_response(context, prompt)
     
-    print(context)
+    # print(context)
+    print(response)
   
     

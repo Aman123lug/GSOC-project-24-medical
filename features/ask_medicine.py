@@ -5,6 +5,15 @@ import time
 st.title("MedSathi ⚕️")
 
 
+def display_chat_messages() -> None:
+    """Print message history
+    @returns None
+    """
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+
 with st.expander("The Medsathi your personalized helpful AI pharmacist"):
     st.subheader("Project Overview")
     st.markdown(
@@ -16,6 +25,21 @@ with st.expander("The Medsathi your personalized helpful AI pharmacist"):
     
 
 st.divider()
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+    st.session_state.greetings = False
+
+display_chat_messages()
+
+# Greet user
+if not st.session_state.greetings:
+    with st.chat_message("assistant"):
+        intro = "Hi there! I'm the GTU Analyst, your one-stop shop for researching Google, Tesla, and Uber. Let's unlock the secrets of these tech giants together!"
+        st.markdown(intro)
+        # Add assistant response to chat history
+        st.session_state.messages.append({"role": "assistant", "content": intro})
+        st.session_state.greetings = True
 
 
 # Example prompts
@@ -52,17 +76,12 @@ elif button_cols_2[2].button(example_prompts[5]):
     
 
 
-# Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-
-
-if prompt := (st.chat_input("What is up?") or button_pressed):
+                          
+if prompt := (st.chat_input("What is up?")):
     st.chat_message("user").markdown(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
     
@@ -80,9 +99,11 @@ if prompt := (st.chat_input("What is up?") or button_pressed):
     
     
     response = get_llm_response(context, prompt)
-    time.sleep(0.02)
     
     with st.chat_message("assistant"):
         st.markdown(response)
+            
     
     st.session_state.messages.append({"role": "assistant", "content": response})
+    
+    st.rerun()
