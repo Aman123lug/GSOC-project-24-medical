@@ -29,6 +29,7 @@ def get_context_new(input_query,med_name,k=2):
     for i in range(len(pinecone_resp['matches'])):
 
         score = pinecone_resp['matches'][i]["score"] 
+    
         print("Score : ", score)
         # if score >= 0.40:
         context += "".join(pinecone_resp['matches'][i]['metadata']['text'])
@@ -79,11 +80,11 @@ def upsert_data(medname,text):
 
 if __name__ == "__main__":
 
-    prompt = "What is Tetanus? and what is the usecase of Tetanus"
+    prompt = "why we use Tetanus, Diphtheria?"
     context = get_context_new(prompt, "A")
-    response = get_llm_response(context, prompt)
+    # response = get_llm_response(context, prompt)
     
     # print(context)
-    print(response)
+    # print(response)
   
     

@@ -5,15 +5,6 @@ import time
 st.title("MedSathi ⚕️")
 
 
-def display_chat_messages() -> None:
-    """Print message history
-    @returns None
-    """
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-
 with st.expander("The Medsathi your personalized helpful AI pharmacist"):
     st.subheader("Project Overview")
     st.markdown(
@@ -30,27 +21,14 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
     st.session_state.greetings = False
 
-display_chat_messages()
 
-# Greet user
-if not st.session_state.greetings:
-    with st.chat_message("assistant"):
-        intro = "Hi there! I'm the GTU Analyst, your one-stop shop for researching Google, Tesla, and Uber. Let's unlock the secrets of these tech giants together!"
-        st.markdown(intro)
-        # Add assistant response to chat history
-        st.session_state.messages.append({"role": "assistant", "content": intro})
-        st.session_state.greetings = True
-
-
-# Example prompts
-# Example prompts
 example_prompts = [
     "How you can help me?",
     "Can i ask about any medicine?",
     "What is Benzoyl Peroxide Topical topical, it's used for?",
     "What are the side effects of hydrocortisone?",
     "When we can take Haemophilus influenzae type b hib and it's used for?",
-    "What special precautions should I follow? Before taking chlorpheniramine",
+    "Tetanus, Diphtheria Any Precautions Before taking?",
     
 ]
 
@@ -81,14 +59,14 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
                           
-if prompt := (st.chat_input("What is up?")):
+if prompt := (st.chat_input("What is up?") or button_pressed):
     st.chat_message("user").markdown(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
-    
+
 
     context = get_context_new(prompt, "A")
-    
-    
+
+
     context = ""
     if "benzoyl peroxide topical" in prompt.lower():
         context += get_context_new(prompt, 'A')
@@ -96,14 +74,13 @@ if prompt := (st.chat_input("What is up?")):
         context += get_context_new(prompt, 'A')
     if "haemophilus influenzae" in prompt.lower():
         context += get_context_new(prompt, 'A')
-    
-    
+
+
     response = get_llm_response(context, prompt)
-    
+
     with st.chat_message("assistant"):
         st.markdown(response)
             
-    
+
     st.session_state.messages.append({"role": "assistant", "content": response})
-    
-    st.rerun()
+

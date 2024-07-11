@@ -6,9 +6,9 @@ ask_medicine = st.Page(
 generate_prescription = st.Page(
     "features/generate_pres.py", title="Generate Prescription", icon=":material/dashboard:"
 )
-scan_prescription = st.Page("features/scan_pres.py", title="Scan Test Reports", icon=":material/bug_report:")
+scan_prescription = st.Page("features/scan_pres.py", title="Scan Prescriptions", icon=":material/bug_report:")
 scan_reports = st.Page(
-    "features/scan_reports.py", title="Scan Prescriptions", icon=":material/notification_important:"
+    "features/scan_reports.py", title="Scan Test Reports", icon=":material/notification_important:"
 )
 
 scan_medicine = st.Page(

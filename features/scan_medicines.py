@@ -5,9 +5,7 @@ from string import punctuation, digits
 import google.generativeai as genai
 from Pine_Process import get_context_new
 from dotenv import load_dotenv
-import os
-import json
-import requests
+
 
 load_dotenv()
 
@@ -30,7 +28,7 @@ picture = st.camera_input("Take a picture")
 if picture:
     st.image(picture)
 
-    path = Image.open("features/sample_images_scan/benzo.jpg")
+    path = Image.open("features/sample_images_scan/crotamiton-hydrocortisone-cream.jpeg")
     reader = easyocr.Reader(['en'])
 
     results = reader.readtext(path)
