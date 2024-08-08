@@ -1,7 +1,17 @@
 import streamlit as st
 from Pine_Process import get_context_new, get_llm_response
 import time
+import os
+from features.llama3_response import QA
+from dotenv import load_dotenv
+import json
+import re
 
+qa = QA()
+
+
+load_dotenv()
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 st.title("MedSathi ⚕️")
 
 
@@ -77,8 +87,18 @@ if prompt := (st.chat_input("What is up?") or button_pressed):
 
 
     response = get_llm_response(context, prompt)
+    # context_and_prompt = context + "\n" + prompt
+    # response = qa(context_and_prompt)
+    # str_response = str(response)
+    
+    # output = str_response.split("=")
+    # output = output[2] + output[3]
+    
 
+    # print(type(str_response))
+    
     with st.chat_message("assistant"):
+        
         st.markdown(response)
             
 

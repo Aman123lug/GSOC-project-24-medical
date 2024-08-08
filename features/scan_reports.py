@@ -5,8 +5,10 @@ import time
 from PIL import Image
 import google.generativeai as genai
 from dotenv import load_dotenv
-import easyocr
+import easyocr, os
+from features.llama3_response import QA
 
+os.environ["GROQ_API_KEY"] = "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"
 
 
 load_dotenv()
@@ -28,8 +30,7 @@ def get_llm_response(context:str, language: str) -> str :
     except Exception as e:
         return "Captured Image is not clear enough, please place the name of med before camera"
 
-
-
+    
 # # Create sections with horizontal placement
 col1, col2 = st.columns(2)
 
@@ -47,14 +48,20 @@ with col1:
         context = ' ' 
         for result in results:
             context += result[1] + ' '
-        response = get_llm_response(context, language)
+            
+        qa = QA()
+        response = qa(context)
+        str_response = str(response)
+    
+        output = str_response.split("=")
+        output = str(output[2] + output[3]).replace("error", "")
+    
+
+        # response = get_llm_response(context, language)
         with st.chat_message("assistant"):
             st.markdown(response)
             
         
-
-
-
 
 with col2:
     st.subheader("Upload Picture of your report")
@@ -86,12 +93,20 @@ with col2:
         
         with st.spinner('Getting Response from LLM..'):
             time.sleep(2)
-        st.write(context)
-        response = get_llm_response(context, language)
-        with st.chat_message("assistant"):
-            st.markdown(response)
-        st.success('Done!')
+        # st.write(context)
+        qa = QA()
+        response = qa(context)
+        
+        str_response = str(response)
+    
+        output = str_response.split("=")
+        output = str(output[2] + output[3]).replace("error", "")
+    
 
+        # response = get_llm_response(context, language)
+        with st.chat_message("assistant"):
+            st.markdown(output)
+        st.success('Done!')
 
 
 
@@ -116,10 +131,22 @@ with col3:
         
         # extracting text from page 
         context = page.extract_text()
-        st.write(context)
-        response = get_llm_response(context, language)
+        
+        # call
+        qa = QA()
+        output = qa(context)
+        # print(output)
+        str_response = str(output)
+    
+        output = str_response.split("=")
+        output = str(output[2] + output[3]).replace("error", "")
+    
+
+    # print(type(str_response))
+        # st.write(context)
+        # response = get_llm_response(context, language)
         with st.chat_message("assistant"):
-            st.markdown(response)
+            st.markdown(output)
             
         
         

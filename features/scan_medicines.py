@@ -23,7 +23,8 @@ def get_llm_response(context:str) -> str :
     except Exception as e:
         return "Captured Image is not clear enough, please place the name of med before camera"
 
-picture = st.camera_input("Take a picture")
+
+picture = st.file_uploader("Choose an image file", type=["jpg", "jpeg", "png"])
 
 if picture:
     st.image(picture)
@@ -58,3 +59,40 @@ if picture:
     output = get_llm_response(context)
     with st.chat_message("assistant"):
         st.markdown(output)
+        
+        
+image_file = st.camera_input("Take a picture")
+if image_file is not None:
+    image = Image.open(image_file)
+    
+
+    st.image(image, caption="Uploaded Image.", use_column_width=True)
+    reader = easyocr.Reader(['en'])
+
+    results = str(reader.readtext(image)).lower()
+    text = ' ' 
+    for result in results:
+        text += result[1] + ' '
+        
+    print("old :", text)
+    
+    remove_digits = str.maketrans('', '', punctuation)
+    remove_digits2 = str.maketrans('', '', digits)
+
+    res = text.translate(remove_digits)
+    res = res.translate(remove_digits2)
+
+    new_text = ""
+    for word in str(res).split():
+        if (len(word) > 4):
+            new_text += word + " "
+            
+    print(new_text)
+    context = get_context_new(new_text, "A")
+    print(context)
+    
+    
+    output = get_llm_response(context)
+    with st.chat_message("assistant"):
+        st.markdown(output)
+        

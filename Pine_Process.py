@@ -42,12 +42,12 @@ def get_context_new(input_query,med_name,k=2):
 
 
 def get_llm_response(context:str,query:str) -> str :
-    input = f""" Your are MedSathi a helpful pharmacist. Use the given context to get the knowledge of the medicine and provide as much information possible about the medicine using the context, and answer only using the context, don't add any other information over it.
+    input = f""" Your are MedSathi a helpful pharmacist. Use the given context to get the knowledge of the medicine and provide the asked information about the medicine using the context, and answer only using the context don't add any other information over it.
     context:{context}.
     This is the query you have to answer
     query:{query}
         
-    but if the user not provide any medicine name or something. if they do any small talk like: hi, hello chat with them and tell him about your self and you can only give information which in FDA approved
+    but if the user not provide any medicine name or something. if they do any small talk like: hi, hello chat with them and tell him about your self but in short and clear and you can only give information which in FDA approved.
         """
     model=genai.GenerativeModel('gemini-pro')
     response=model.generate_content(input)
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     context = get_context_new(prompt, "A")
     # response = get_llm_response(context, prompt)
     
-    # print(context)
+    print(context)
     # print(response)
   
     
