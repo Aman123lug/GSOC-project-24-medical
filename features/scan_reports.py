@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 import easyocr, os
 from features.llama3_response import QA
 
+os.environ["GROQ_API_KEY"] = ""
+
 
 load_dotenv()
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
