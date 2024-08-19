@@ -8,10 +8,10 @@ from dotenv import load_dotenv
 import easyocr, os
 from features.llama3_response import QA
 
-os.environ["GROQ_API_KEY"] = "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"
-
 
 load_dotenv()
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+
 st.title("Check Medical Test Reports 📄")
 
 language = st.selectbox("Select Languages", ("English", "Hindi", "Hinglish", "Spanish"))
