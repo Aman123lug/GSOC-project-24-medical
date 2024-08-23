@@ -3,10 +3,7 @@ import streamlit as st
 ask_medicine = st.Page(
     "features/ask_medicine.py", title="Ask Medicine", icon=":material/dashboard:", default=True
 )
-generate_prescription = st.Page(
-    "features/generate_pres.py", title="Generate Prescription", icon=":material/dashboard:"
-)
-scan_prescription = st.Page("features/scan_pres.py", title="Scan Prescriptions", icon=":material/bug_report:")
+
 scan_reports = st.Page(
     "features/scan_reports.py", title="Scan Test Reports", icon=":material/notification_important:"
 )
@@ -16,13 +13,13 @@ scan_medicine = st.Page(
 )
 
 search = st.Page("tools/search.py", title="Search", icon=":material/search:")
-history = st.Page("tools/history.py", title="History", icon=":material/history:")
+history = st.Page("tools/upload_data.py", title="Upload Data")
 
 
 pg = st.navigation(
     {
         
-        "Features": [ask_medicine, generate_prescription, scan_prescription, scan_reports, scan_medicine],
+        "Features": [ask_medicine, scan_reports, scan_medicine],
         "Extra": [search, history],
     }
 )

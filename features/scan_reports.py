@@ -1,6 +1,5 @@
 import streamlit as st
 from pypdf import PdfReader 
-import io
 import time
 from PIL import Image
 import google.generativeai as genai
@@ -8,11 +7,10 @@ from dotenv import load_dotenv
 import easyocr, os
 from features.llama3_response import QA
 
-os.environ["GROQ_API_KEY"] = ""
-
+# os.environ["GROQ_API_KEY"] = "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"
 
 load_dotenv()
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+# GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 
 st.title("Check Medical Test Reports 📄")
 

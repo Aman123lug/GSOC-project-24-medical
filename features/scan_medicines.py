@@ -15,6 +15,7 @@ st.title("Capture Medicine")
 def get_llm_response(context:str) -> str :
     input = f""" Your are MedSathi a helpful pharmacist. Use the given context to get the knowledge of the medicine and provide as much information possible about the medicine using the context. You're job is sort of like summarizing and provide all the info.
     context:{context}."""
+    
     try:
         model=genai.GenerativeModel('gemini-pro')
         response=model.generate_content(input)

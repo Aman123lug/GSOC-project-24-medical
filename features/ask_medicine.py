@@ -8,10 +8,9 @@ import json
 import re
 
 qa = QA()
-
-
 load_dotenv()
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+
+
 st.title("MedSathi ⚕️")
 
 
@@ -37,7 +36,7 @@ example_prompts = [
     "Can i ask about any medicine?",
     "What is Benzoyl Peroxide Topical topical, it's used for?",
     "What are the side effects of hydrocortisone?",
-    "When we can take Haemophilus influenzae type b hib and it's used for?",
+    "When we can take Haemophilus influenzae type b hib?",
     "Tetanus, Diphtheria Any Precautions Before taking?",
     
 ]
@@ -63,6 +62,12 @@ elif button_cols_2[2].button(example_prompts[5]):
     button_pressed = example_prompts[5]
     
 
+on = st.toggle("Switch to User Uploaded data")
+query = "A"
+if on:
+    query="user"
+   
+    st.warning("The bot will use user uploaded data we do not gurentee it's safety!", icon="⚠️")
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
@@ -74,17 +79,8 @@ if prompt := (st.chat_input("What is up?") or button_pressed):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
 
-    context = get_context_new(prompt, "A")
-
-
-    context = ""
-    if "benzoyl peroxide topical" in prompt.lower():
-        context += get_context_new(prompt, 'A')
-    if "hydrocortisone" in prompt.lower():
-        context += get_context_new(prompt, 'A')
-    if "haemophilus influenzae" in prompt.lower():
-        context += get_context_new(prompt, 'A')
-
+    context = get_context_new(prompt, query)
+    print("is file wala context:", context)
 
     response = get_llm_response(context, prompt)
     # context_and_prompt = context + "\n" + prompt
@@ -97,10 +93,15 @@ if prompt := (st.chat_input("What is up?") or button_pressed):
 
     # print(type(str_response))
     
+    
+    
+    
+    
+    
     with st.chat_message("assistant"):
         
         st.markdown(response)
             
 
     st.session_state.messages.append({"role": "assistant", "content": response})
-
+  
