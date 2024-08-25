@@ -34,6 +34,13 @@ This project aims to leverage machine learning and generative AI to help address
 - **User Interface:** Create a user-friendly interface.
 - **LLMOps Pipeline:** Define an end-to-end LLMOps pipeline to enable additional training and fine-tuning.
 
+## User Friendly Interface
+![alt text](image-2.png)
+
+## Ask About your Medicines
+![alt text](image-1.png)
+
+
 This project encompasses GenAI, MLOps, and LLMOps tech stacks.
 
 ## How to Run the Project
