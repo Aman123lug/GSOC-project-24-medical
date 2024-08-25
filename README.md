@@ -43,11 +43,36 @@ This project aims to leverage machine learning and generative AI to help address
 
 This project encompasses GenAI, MLOps, and LLMOps tech stacks.
 
-## How to Run the Project
+## How to Setup the Project
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/yourusername/analytics-edge-ecosystem.git
    cd analytics-edge-ecosystem
+
+## Set API keys
+2. **Setting all required API keys**
+- **Create a .env file**
+```
+HUGGINGFACEHUB_API_TOKEN="API key"
+PINECONE_API_KEY = "API key"
+PINECONE_INDEX = "medcial-rag-chatbot"
+GENAI_API_KEY = "Gemini key"
+GROQ_API_KEY = "Lama3-7b"
+```
+### Add your APi keys
+
+## Create Virtual Environment
+3. **Install all the required packages**
+```
+pip install -r requirements.txt
+```
+
+## Run Command
+4. **Run app.py**
+```
+steamlit run app.py
+```
+
 
 
 ## Acknowledgments
